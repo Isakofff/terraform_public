@@ -16,14 +16,15 @@ variable "dev-list-of-target" {
 }
 
 
-// Input variables - enter the value during Apply
-variable db_pass {
+//// Input variables - enter the value during Apply
+//variable db_pass {
+//
+//}
 
-}
-// terraform apply -var 'secret-map={target1="1", target2="2"}'
-variable secret-map {
-  type = map
-}
+//// terraform apply -var 'secret-map={target1="1", target2="2"}'
+//variable secret-map {
+//  type = map
+//}
 
 
 // Output variables
