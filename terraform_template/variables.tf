@@ -2,6 +2,9 @@ variable "main-region" {
   description = "Main operational region"
 }
 
+variable "AK" {}
+variable "SK" {}
+
 variable "golden-ami" {}
 
 variable "AZs" {
