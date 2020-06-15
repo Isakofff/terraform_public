@@ -1,6 +1,8 @@
+# EC2
 resource "aws_instance" "main-server" {
   ami = var.golden-ami
   instance_type = "t3a.medium"
+  #key_name = "blabla"
   vpc_security_group_ids = [aws_security_group.subnet-security.id]
   subnet_id = aws_subnet.subnet2.id
 
@@ -12,5 +14,15 @@ resource "aws_instance" "main-server" {
 
   tags = {
     Name = "terraform-aws-main-server"
+  }
+}
+
+
+# static IP
+resource "aws_eip" "main-server-ip" {
+  instance = aws_instance.main-server.id
+
+  tags = {
+    Name = "terraform-aws-main-server-ip"
   }
 }
