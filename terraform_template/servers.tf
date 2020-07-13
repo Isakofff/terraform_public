@@ -1,8 +1,8 @@
 # EC2
 resource "aws_instance" "main-server" {
-  ami = var.golden-ami
+  ami = var.golden_ami
   instance_type = "t3a.medium"
-  #key_name = "blabla"
+  key_name = var.key_name
   vpc_security_group_ids = [aws_security_group.subnet-security.id]
   subnet_id = aws_subnet.subnet2.id
 

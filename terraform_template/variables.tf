@@ -4,8 +4,9 @@ variable "main-region" {
 
 variable "AK" {}
 variable "SK" {}
-
-variable "golden-ami" {}
+variable "golden_ami" {}
+variable "private_key_path" {}
+variable "key_name" {}
 
 variable "AZs" {
   type = map
