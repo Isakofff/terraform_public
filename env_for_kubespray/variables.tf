@@ -20,23 +20,28 @@ variable "aws_cluster_name" {
   description = "Name of AWS Cluster"
 }
 
-data "aws_ami" "distro" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["CoreOS-stable-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["595879546273"] #CoreOS
+variable "aws_ami" {
+  description = "AWS AMI ID"
 }
 
+//data "aws_ami" "distro" {
+//  most_recent = true
+//
+//  filter {
+//    name   = "name"
+//    values = ["dcos-centos7-*"]
+//  }
+//
+//  filter {
+//    name   = "virtualization-type"
+//    values = ["hvm"]
+//  }
+//
+//  owners = ["688023202711"] # Centos 7
+//}
+
 //AWS VPC Variables
+
 
 variable "aws_vpc_cidr_block" {
   description = "CIDR Block for VPC"
@@ -44,12 +49,12 @@ variable "aws_vpc_cidr_block" {
 
 variable "aws_cidr_subnets_private" {
   description = "CIDR Blocks for private subnets in Availability Zones"
-  type        = "list"
+  type        = list
 }
 
 variable "aws_cidr_subnets_public" {
   description = "CIDR Blocks for public subnets in Availability Zones"
-  type        = "list"
+  type        = list
 }
 
 //AWS EC2 Settings
@@ -101,9 +106,7 @@ variable "k8s_secure_api_port" {
 
 variable "default_tags" {
   description = "Default tags for all resources"
-  type        = "map"
+  type        = map
 }
 
-variable "inventory_file" {
-  description = "Where to store the generated inventory file"
-}
+
