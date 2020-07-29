@@ -3,8 +3,8 @@ resource "aws_instance" "main-server" {
   ami = var.golden_ami
   instance_type = "t3a.medium"
   key_name = var.key_name
-  vpc_security_group_ids = [aws_security_group.subnet-security.id]
-  subnet_id = aws_subnet.subnet2.id
+  vpc_security_group_ids = [var.security_group]
+  subnet_id = var.subnet1
 
   root_block_device {
     volume_type = "standard"

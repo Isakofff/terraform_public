@@ -2,10 +2,18 @@ variable "main-region" {
   description = "Main operational region"
 }
 
-variable "AK" {}
-variable "SK" {}
-variable "golden_ami" {}
-variable "private_key_path" {}
+variable "AK" {
+  type = string
+}
+variable "SK" {
+  type = string
+}
+variable "golden_ami" {
+  type = string
+}
+variable "private_key_path" {
+  type = string
+}
 variable "key_name" {}
 
 variable "AZs" {
@@ -33,6 +41,6 @@ output "explain1" {
   value = "This is our output variable. You can see it only in Apply"
 }
 
-output "aws_cidr_subnet1" {
-  value = aws_subnet.subnet1.cidr_block
-}
+//output "aws_cidr_subnet1" {
+//  value = aws_subnet.subnet1.cidr_block
+//}
