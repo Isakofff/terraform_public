@@ -1,3 +1,6 @@
+variable "bucket_name" {
+  type = string
+}
 variable "main-region" {
   description = "Main operational region"
 }
@@ -38,7 +41,7 @@ variable "dev-list-of-target" {
 
 // Output variables
 output "explain1" {
-  value = "This is our output variable. You can see it only in Apply"
+  value = "This is our output variable. You can see it only in Apply or Show"
 }
 
 //output "aws_cidr_subnet1" {

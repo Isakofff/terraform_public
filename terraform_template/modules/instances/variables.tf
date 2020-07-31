@@ -1,3 +1,4 @@
+
 variable "AZs" {
   type = map
 }
