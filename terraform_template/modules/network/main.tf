@@ -27,15 +27,40 @@ resource "aws_subnet" "subnet2" {
   }
 }
 
-# allow all traffic from our VPC
 resource "aws_security_group" "subnet-security" {
+  # 'Security group name' field
+  name = "subnet-security"
+  description = "Allow all traffic from our VPC and world-wide 80/443"
   vpc_id = aws_vpc.environment1.id
+
   ingress {
     from_port   = 0
-    protocol    = -1
     to_port     = 0
+    protocol    = -1
+    # 0.0.0.0/0 - worldwide
+    # ["ip/32", "ip/32"]
     cidr_blocks = [aws_vpc.environment1.cidr_block]
   }
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+
   tags = {
     Name = "terraform-aws-SG"
   }
